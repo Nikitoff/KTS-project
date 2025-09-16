@@ -1,0 +1,43 @@
+.page {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    background-color: rgba(255, 192, 118, 0.023);
+    overflow: hidden;
+}
+
+.card {
+    position: relative;
+    width: 1440px;
+    max-width: 100%;
+    margin: 120px auto 0;
+    z-index: 1;
+}
+
+.section {
+    margin-bottom: 40px;
+}
+
+.section h2 {
+    font-family: 'Roboto';
+    font-size: 20px;
+    font-weight: 600;
+    color: #000000;
+    margin-bottom: 24px;
+}
+
+.summaryText {
+    display: flex;
+    align-items: flex-start;
+    padding: 36px;
+    gap: 10px;
+    width: 1240px;
+    border-radius: 10px;
+    background: rgba(181, 70, 15, 0.33);
+    margin-left: 0px;
+    margin-top: 40px;
+    font-family: 'Roboto';
+    font-size: 16px;
+    line-height: 20px;
+    color: #000000;
+}

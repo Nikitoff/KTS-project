@@ -1,0 +1,48 @@
+.button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 64px;
+    height: 52px;
+    padding: 0;
+    background: #b5460f;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    line-height: 18px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+/* Сброс стилей disabled */
+button.button:disabled {
+    background: #b5460f;
+    color: white;
+    opacity: 0.8;
+    cursor: not-allowed;
+}
+
+.button_disabled {
+    background: #b5460f;
+    color: #b5460f;
+    cursor: not-allowed;
+}
+
+.button_loading {
+    pointer-events: none;
+    background: #b5460f;
+}
+
+.button:not(.button_loading):not(:disabled):hover {
+    background: #a03d0d;
+}
+
+.button:not(.button_loading):not(:disabled):active {
+    background: #8b340b;
+}
+
+.button__text {
+    display: inline;
+}

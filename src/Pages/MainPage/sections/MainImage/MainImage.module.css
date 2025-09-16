@@ -1,0 +1,33 @@
+/* hero-section.module.css */
+
+.MainImage {
+    width: 1440px;
+    height: 572px;
+    margin: 0 auto;
+    position: relative;
+    background-image: url('/MainImage.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.content {
+    position: absolute;
+    width: 459px;
+    height: 323px;
+    left: 526px;
+    top: 286px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.title {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 64px;
+    line-height: 72px;
+    text-align: center;
+    color: #FFFFFF;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}

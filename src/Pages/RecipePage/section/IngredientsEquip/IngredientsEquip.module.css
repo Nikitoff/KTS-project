@@ -1,0 +1,91 @@
+/* ingredients-equipment.module.css */
+
+.container {
+    width: 100%;
+    max-width: 1329px;
+    margin: 48px auto 0;
+    padding: 0 16px;
+    margin-left: 0px
+}
+
+.title {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 24px;
+    color: #000000;
+    margin-bottom: 24px;
+}
+
+.grid {
+    display: flex;
+    gap: 72px;
+    position: relative;
+}
+
+/* Вертикальная линия между секциями */
+.divider {
+    position: absolute;
+    left: calc(50% - 1px);
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: #b5460f;
+    z-index: 0;
+}
+
+/* Маленький кружок сверху линии */
+.marker {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+    width: 7px;
+    height: 7px;
+    background: #b5460f;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+/* Колонки для ингредиентов и оборудования */
+.columnWrapper {
+    position: relative;
+    z-index: 1;
+    width: 628px;
+    max-width: 100%;
+}
+
+.equipmentWrapper {
+    position: relative;
+    z-index: 1;
+    width: 664px;
+    max-width: 100%;
+}
+
+/* Сетка из двух колонок */
+.twoColumnGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    min-width: 0;
+    /* Для корректной обрезки текста */
+}
+
+.text {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    color: #000000;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

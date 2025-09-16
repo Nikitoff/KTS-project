@@ -1,0 +1,53 @@
+.container {
+    width: 100%;
+    max-width: 1024px;
+    margin: 100 auto;
+}
+
+.step {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 0;
+}
+
+.stepContent {
+    position: relative;
+    width: 700px;
+    height: 104px;
+    z-index: 0;
+}
+
+.stepLabel {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 434px;
+    height: 28px;
+}
+
+.stepLabelText {
+    font-family: 'Roboto';
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
+    color: #000000;
+}
+
+.stepDescription {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 700px;
+    height: 72px;
+}
+
+.stepDescriptionText {
+    font-family: 'Roboto';
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
+    color: #000000;
+}

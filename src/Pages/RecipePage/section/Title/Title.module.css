@@ -1,0 +1,35 @@
+.titleContainer {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 0 0 24px 0;
+    /* отступ снизу */
+}
+
+.backButton {
+    background: none;
+    border: none;
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    opacity: 0.8;
+}
+
+.backButton svg {
+    width: 32px;
+    height: 32px;
+    transform: rotate(180deg);
+}
+
+.titleText {
+    font-family: 'Roboto';
+    font-weight: 700;
+    font-size: 44px;
+    line-height: 48px;
+    color: #000000;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin: 0;
+}

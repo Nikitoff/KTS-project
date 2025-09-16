@@ -1,0 +1,100 @@
+/* navigation-bar.module.css */
+
+.navbar {
+    position: absolute;
+    width: 1440px;
+    height: 64px;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+    /* ← центрируем по горизонтали */
+    background: #ffffff;
+    z-index: 1000;
+}
+
+.logoWrapper {
+    position: absolute;
+    width: 105px;
+    height: 24px;
+    left: 156px;
+    top: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logoText {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 24px;
+    color: #000000;
+    flex: none;
+    order: 0;
+    flex-grow: 1;
+}
+
+.logoIcon {
+    position: absolute;
+    width: 36px;
+    height: 36px;
+    left: 100px;
+    top: 14px;
+}
+
+.userIcon {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    left: 1316px;
+    /* 1440 - 124 */
+    top: 20px;
+
+}
+
+.heartIcon {
+    position: absolute;
+    width: 17px;
+    height: 17px;
+    left: 1282px;
+    top: 24px;
+    border: 2px;
+}
+
+.navMenu {
+    position: absolute;
+    width: 510px;
+    height: 20px;
+    left: 341px;
+    top: 22px;
+    display: flex;
+    gap: 16px;
+}
+
+.navItem {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    gap: 10px;
+    width: max-content;
+    height: 20px;
+}
+
+.navLink {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    color: #000000;
+    text-decoration: none;
+}
+
+.navLink.active,
+.navLink:hover {
+    font-weight: 600;
+    color: #b5460f;
+}

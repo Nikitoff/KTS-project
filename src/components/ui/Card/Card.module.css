@@ -1,0 +1,211 @@
+/* Card.module.css */
+
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0 0 24px;
+    gap: 24px;
+
+    width: 360px;
+    height: 578px;
+    margin: 0 auto;
+
+    background: #ffffff;
+    border-radius: 10px;
+
+    /* Сбрасываем растяжение в grid */
+    flex: none;
+    order: 0;
+}
+
+/* Header — контейнер изображения */
+.cardHeader {
+    position: relative;
+    width: 360px;
+    height: 360px;
+    flex: none;
+    order: 0;
+}
+
+/* Фон-заглушка (серый прямоугольник) */
+.cardImagePlaceholder {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background: #d9d9d9;
+    border-radius: 10px 10px 0 0;
+}
+
+/* Изображение поверх заглушки */
+.cardImage {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    border-radius: 10px 10px 0 0;
+    object-fit: cover;
+}
+
+/* Body — текстовая часть */
+.cardBody {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0 12px;
+    gap: 20px;
+
+    width: 360px;
+    height: 170px;
+
+    flex: none;
+    order: 1;
+}
+
+/* Frame 1 — контейнер заголовка и ингредиентов */
+.cardContent {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 0;
+    gap: 8px;
+
+    width: 336px;
+    height: 98px;
+    align-self: stretch;
+    flex: none;
+    order: 0;
+}
+
+/* Caption — текст над заголовком (время приготовления) */
+.cardCaption {
+    width: 336px;
+    height: 18px;
+
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 18px;
+    color: #afadb5;
+    /* text-secondary */
+
+    flex: none;
+    order: 0;
+    flex-grow: 1;
+}
+
+/* Title — название рецепта */
+.cardTitle {
+    width: 336px;
+    height: 24px;
+
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 24px;
+    color: #000000;
+    /* text-primary */
+
+    flex: none;
+    order: 0;
+    flex-grow: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+
+.cardSubtitle {
+    width: 336px;
+    height: 40px;
+
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    color: #afadb5;
+
+
+    flex: none;
+    order: 0;
+    flex-grow: 1;
+    display: -webkit-box;
+
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+
+.cardBottom {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0;
+    gap: 8px;
+
+    width: 336px;
+    height: 52px;
+    align-self: stretch;
+    flex: none;
+    order: 1;
+}
+
+
+.cardPrice {
+    width: 69px;
+    height: 22px;
+
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 22px;
+    color: #b5460f;
+    flex: none;
+    order: 0;
+    flex-grow: 1;
+}
+
+/* Button */
+.cardButton {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 14px 20px;
+    gap: 8px;
+
+    min-width: 79px;
+    min-height: 52px;
+    background: #b5460f;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.cardButton:hover {
+    background: #a03d0d;
+}
+
+.cardButtonText {
+    width: 39px;
+    height: 18px;
+
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 18px;
+    color: #ffffff;
+    flex: none;
+    order: 0;
+}
