@@ -91,7 +91,6 @@ export const RecipeListSection = (): JSX.Element => {
   const loadRecipes = async () => {
     setLoading(true);
     setError(null);
-
     try {
       const filters: RecipeFilters = {};
       if (searchTerm) filters.name = searchTerm;
