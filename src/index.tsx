@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as ReactDom from 'react-dom/client';
 import { BrowserRouter } from "react-router-dom";
-import Recipes from './Pages/MainPage/MainPage';
+import "./config/configureMobX"
 import App from 'App/App';
 
 
