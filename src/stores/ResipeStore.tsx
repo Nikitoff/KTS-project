@@ -44,10 +44,12 @@ export class RecipeStore {
 
         try {
             const queryParams = {
-                populate: ["images"],
+                populate: ["images", "ingradients"],
                 filters: {
                     ...(this.searchTerm && { name: { $containsi: this.searchTerm } }),
-                    ...(this.categoryId && { category: { id: { $eq: Number(this.categoryId) } } }),
+                    ...(this.categoryId && !isNaN(Number(this.categoryId)) && {
+                        category: { id: { $eq: Number(this.categoryId) } },
+                    }),
                 },
                 pagination: {
                     page: this.currentPage,
@@ -83,14 +85,17 @@ export class RecipeStore {
     setSearchTerm = (value: string) => {
         this.searchTerm = value;
         this.currentPage = 1;
+        this.loadRecipes();
     };
 
     setCategoryId = (value: string) => {
         this.categoryId = value;
         this.currentPage = 1;
+        this.loadRecipes();
     };
 
     setCurrentPage = (page: number) => {
         this.currentPage = page;
+        this.loadRecipes();
     };
 }

@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./NavigationMenu.module.css";
+import { useNavigate } from "react-router-dom";
 
 const NavigationMenu = () => {
   const navItems = [
@@ -9,6 +10,7 @@ const NavigationMenu = () => {
     { label: "Menu Items", isActive: false },
     { label: "Meal Planning", isActive: false },
   ];
+  const navigate = useNavigate();
 
   return (
     <nav className={styles.navbar}>
@@ -31,7 +33,8 @@ const NavigationMenu = () => {
 
       <img
         src="/heart.svg"
-        alt="Logo"
+        alt="fav"
+        onClick={() => navigate("/favorites")}
         className={styles.heartIcon}
       />
 

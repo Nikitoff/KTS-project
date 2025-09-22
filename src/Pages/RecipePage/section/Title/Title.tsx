@@ -17,7 +17,7 @@ const Title: React.FC<RecipeTitleProps> = ({ title }) => {
                 className={styles.backButton}
                 aria-label="Назад на главную"
             >
-                <img src="/arrow-right.svg"></img>
+                <img src="/arrowleft.svg"></img>
             </button>
 
             {/* Заголовок */}

@@ -1,4 +1,4 @@
-import React, { useEffect, JSX } from "react";
+import React, { useEffect, JSX, useState } from "react";
 import styles from "./RecipeListSection.module.css";
 import Input from "components/ui/Input/Input";
 import MultiDropdown, { Option } from "components/ui/MultiDropdown/MultiDropdown";
@@ -8,9 +8,6 @@ import { observer } from "mobx-react-lite";
 import Card from "components/ui/Card";
 import { getFirstImageUrl } from "components/utils/api";
 
-// Иконки
-import ChevronLeftIcon from "../../../../../public/arrow-right.svg";
-import ChevronRightIcon from "../../../../../public/arrow-right.svg";
 import { reaction } from "mobx";
 import Loader from "components/ui/Loader";
 
@@ -18,11 +15,12 @@ const RecipeListSection = () => {
   const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
   const { recipeStore, favoritesStore } = useStore();
+  const [searchInput, setSearchInput] = useState(recipeStore.searchTerm);
 
   // Восстановление из URL
   useEffect(() => {
     const search = searchParams.get("search") || "";
-    const category = searchParams.get("category") || "";
+    const category = searchParams.get("category") || "0";
     const page = Number(searchParams.get("page")) || 1;
 
     recipeStore.setSearchTerm(search);
@@ -30,23 +28,7 @@ const RecipeListSection = () => {
     recipeStore.setCurrentPage(page);
   }, []);
 
-  // Синхронизация с URL
-  useEffect(() => {
-    return reaction(
-      () => ({
-        search: recipeStore.searchTerm,
-        category: recipeStore.categoryId,
-        page: recipeStore.currentPage,
-      }),
-      (params) => {
-        const newParams: Record<string, string> = {};
-        if (params.search) newParams.search = params.search;
-        if (params.category) newParams.category = params.category;
-        if (params.page > 1) newParams.page = String(params.page);
-        setSearchParams(newParams);
-      }
-    );
-  }, []);
+
 
   const formatTime = (minutes: number): string => {
     const h = Math.floor(minutes / 60);
@@ -87,9 +69,9 @@ const RecipeListSection = () => {
     return items;
   };
 
-  // ✅ Правильное чтение title из Strapi
+
   const CATEGORY_OPTIONS = [
-    { key: "all", value: "Все категории" },
+    { key: "", value: "Все категории" },
     ...recipeStore.categories.map((cat: any) => ({
       key: String(cat.id),
       value: cat.title,
@@ -101,6 +83,16 @@ const RecipeListSection = () => {
   if (recipeStore.loading && recipeStore.recipes.length === 0) {
     return <Loader />;
   }
+
+
+
+  // Кнопка "Поиск"
+  const handleSearchClick = () => {
+    recipeStore.setSearchTerm(searchInput);
+    recipeStore.setCurrentPage(1); // сброс на первую страницу
+  };
+
+
 
   return (
     <section className={styles.container}>
@@ -116,12 +108,18 @@ const RecipeListSection = () => {
       <div className={styles.filters}>
         <div className={styles.searchRow}>
           <Input
-            value={recipeStore.searchTerm}
-            onChange={(value) => recipeStore.setSearchTerm(value)}
+            value={searchInput}
+            onChange={setSearchInput}
             placeholder="Enter dishes"
             className={styles.searchInput}
             afterSlot={
-              <img src="/Search.svg" alt="Search" width="24" height="24" />
+              <button
+                type="button"
+                onClick={handleSearchClick}
+                className={styles.searchButton}
+              >
+                <img src="/Search.svg" alt="Search" width="24" height="24" />
+              </button>
             }
           />
         </div>
@@ -133,11 +131,12 @@ const RecipeListSection = () => {
               value={
                 recipeStore.categoryId
                   ? [{ key: recipeStore.categoryId, value: "" }]
-                  : []
+                  : [{ key: "", value: "Все категории" }]
               }
-              onChange={(options) =>
-                recipeStore.setCategoryId(options[0]?.key || "")
-              }
+              onChange={(options) => {
+                const selectedKey = options[0]?.key || ""; // ← если нет выбора — ""
+                recipeStore.setCategoryId(selectedKey);   // сохраняем ""
+              }}
               getTitle={() => {
                 const selected = CATEGORY_OPTIONS.find(
                   (opt) => opt.key === recipeStore.categoryId
@@ -148,7 +147,7 @@ const RecipeListSection = () => {
               className={styles.categoryDropdown}
             />
           ) : (
-            <span>Загрузка категорий...</span>
+            <Loader></Loader>
           )}
         </div>
       </div>
@@ -176,7 +175,10 @@ const RecipeListSection = () => {
                     borderRadius: "8px",
                     cursor: "pointer",
                   }}
-                  onClick={() => favoritesStore.toggle(recipe.documentId)}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    favoritesStore.toggle(recipe.documentId);
+                  }}
                 >
                   <span style={{ color: "white", fontSize: "1.125rem" }}>
                     {favoritesStore.isFavorite(recipe.documentId) ? "Saved" : "Save"}
@@ -198,7 +200,7 @@ const RecipeListSection = () => {
           disabled={recipeStore.currentPage === 1}
           aria-label="Previous page"
         >
-          <img src={ChevronLeftIcon} alt="Previous" width="32" height="32" />
+          <img src='/arrowleft.svg' alt="Previous" width="32" height="32" />
         </button>
 
         <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
@@ -225,7 +227,7 @@ const RecipeListSection = () => {
           disabled={recipeStore.currentPage >= recipeStore.totalPages}
           aria-label="Next page"
         >
-          <img src={ChevronRightIcon} alt="Next" width="32" height="32" />
+          <img src='/arrowright.svg' alt="Next" width="32" height="32" />
         </button>
       </div>
     </section>
