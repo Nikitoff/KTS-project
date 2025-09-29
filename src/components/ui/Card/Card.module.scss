@@ -1,25 +1,26 @@
-/* Card.module.css */
+@use "styles/variables" as *;
 
 .card {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     padding: 0 0 24px;
-    gap: 24px;
+    gap: $spacing-6;
 
     width: 360px;
     height: 578px;
     margin: 0 auto;
 
-    background: #ffffff;
-    border-radius: 10px;
+    background: $color-surface;
+    border-radius: $radius-md;
+    cursor: pointer;
 
     /* Сбрасываем растяжение в grid */
     flex: none;
     order: 0;
 }
 
-/* Header — контейнер изображения */
+
 .cardHeader {
     position: relative;
     width: 360px;
@@ -28,7 +29,7 @@
     order: 0;
 }
 
-/* Фон-заглушка (серый прямоугольник) */
+
 .cardImagePlaceholder {
     position: absolute;
     width: 100%;
@@ -39,7 +40,7 @@
     border-radius: 10px 10px 0 0;
 }
 
-/* Изображение поверх заглушки */
+
 .cardImage {
     position: absolute;
     width: 100%;
@@ -50,7 +51,7 @@
     object-fit: cover;
 }
 
-/* Body — текстовая часть */
+
 .cardBody {
     display: flex;
     flex-direction: column;
@@ -65,14 +66,14 @@
     order: 1;
 }
 
-/* Frame 1 — контейнер заголовка и ингредиентов */
+
 .cardContent {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
     padding: 0;
-    gap: 8px;
+    gap: $spacing-2;
 
     width: 336px;
     height: 98px;
@@ -81,7 +82,7 @@
     order: 0;
 }
 
-/* Caption — текст над заголовком (время приготовления) */
+
 .cardCaption {
     width: 336px;
     height: 18px;
@@ -89,17 +90,20 @@
     font-family: 'Roboto', sans-serif;
     font-style: normal;
     font-weight: 500;
-    font-size: 14px;
+    font-size: $font-size-sm;
+    ;
+    ;
+    ;
     line-height: 18px;
     color: #afadb5;
-    /* text-secondary */
+
 
     flex: none;
     order: 0;
     flex-grow: 1;
 }
 
-/* Title — название рецепта */
+
 .cardTitle {
     width: 336px;
     height: 24px;
@@ -109,8 +113,8 @@
     font-weight: 500;
     font-size: 20px;
     line-height: 24px;
-    color: #000000;
-    /* text-primary */
+    color: $color-text;
+
 
     flex: none;
     order: 0;
@@ -168,13 +172,13 @@
     font-weight: 700;
     font-size: 18px;
     line-height: 22px;
-    color: #b5460f;
+    color: $color-primary;
     flex: none;
     order: 0;
     flex-grow: 1;
 }
 
-/* Button */
+
 .cardButton {
     display: flex;
     flex-direction: row;
@@ -185,15 +189,15 @@
 
     min-width: 79px;
     min-height: 52px;
-    background: #b5460f;
+    background: $color-primary;
     border: none;
-    border-radius: 10px;
+    border-radius: $radius-md;
     cursor: pointer;
     transition: background 0.2s ease;
 }
 
 .cardButton:hover {
-    background: #a03d0d;
+    background: $color-brand-dark;
 }
 
 .cardButtonText {
@@ -205,7 +209,7 @@
     font-weight: 400;
     font-size: 18px;
     line-height: 18px;
-    color: #ffffff;
+    color: $color-surface;
     flex: none;
     order: 0;
 }

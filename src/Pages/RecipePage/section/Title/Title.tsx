@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import styles from "./Title.module.css";
+import styles from "./Title.module.scss";
 
 interface RecipeTitleProps {
     title: string;

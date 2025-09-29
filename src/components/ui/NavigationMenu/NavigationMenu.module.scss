@@ -1,4 +1,4 @@
-/* navigation-bar.module.css */
+@use "styles/variables" as *;
 
 .navbar {
     position: absolute;
@@ -7,8 +7,7 @@
     left: 50%;
     top: 0;
     transform: translateX(-50%);
-    /* ← центрируем по горизонтали */
-    background: #ffffff;
+    background: $color-surface;
     z-index: 1000;
 }
 
@@ -29,10 +28,7 @@
     font-weight: 700;
     font-size: 20px;
     line-height: 24px;
-    color: #000000;
-    flex: none;
-    order: 0;
-    flex-grow: 1;
+    color: $color-text;
 }
 
 .logoIcon {
@@ -48,9 +44,7 @@
     width: 24px;
     height: 24px;
     left: 1316px;
-    /* 1440 - 124 */
     top: 20px;
-
 }
 
 .heartIcon {
@@ -89,12 +83,12 @@
     font-weight: 400;
     font-size: 16px;
     line-height: 20px;
-    color: #000000;
+    color: $color-text;
     text-decoration: none;
 }
 
 .navLink.active,
 .navLink:hover {
     font-weight: 600;
-    color: #b5460f;
+    color: $color-primary;
 }

@@ -2,14 +2,14 @@ import React, { JSX, useEffect } from "react";
 import RecipeListSection from "../MainPage/sections/RecipeListSection/RecipeListSection";
 import MainImage from "./sections/MainImage/MainImage";
 import { reaction } from "mobx";
-import { useStore } from "../../stores/RootStore";
+import { useStore } from "stores/RootStore";
 import { useSearchParams } from "react-router-dom";
 
 const MainPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const { recipeStore } = useStore();
 
-  // 🔁 Восстановление из URL при загрузке
+
   useEffect(() => {
     const search = searchParams.get("search") || "";
     const category = searchParams.get("category") || "";
@@ -20,12 +20,11 @@ const MainPage = () => {
     recipeStore.setCurrentPage(page);
   }, []);
 
-  // 🔄 Синхронизация стора → URL
+
   useEffect(() => {
     if (!recipeStore) return;
 
-    // reaction будет пересоздан при каждом ререндере? Нет!
-    // Но мы его правильно очистим
+
     const dispose = reaction(
       () => ({
         search: recipeStore.searchTerm,
@@ -45,7 +44,7 @@ const MainPage = () => {
       }
     );
 
-    return () => dispose(); // ✅ очистка при размонтировании
+    return () => dispose();
   }, [recipeStore, setSearchParams]);
 
 

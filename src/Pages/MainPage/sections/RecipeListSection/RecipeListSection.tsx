@@ -1,15 +1,14 @@
-import React, { useEffect, JSX, useState } from "react";
-import styles from "./RecipeListSection.module.css";
+import React, { useEffect, useState } from "react";
+import styles from "./RecipeListSection.module.scss";
 import Input from "components/ui/Input/Input";
 import MultiDropdown, { Option } from "components/ui/MultiDropdown/MultiDropdown";
 import { useNavigate, useSearchParams } from "react-router-dom";
-import { useStore } from "../../../../stores/RootStore";
+import { useStore } from "stores/RootStore";
 import { observer } from "mobx-react-lite";
 import Card from "components/ui/Card";
-import { getFirstImageUrl } from "components/utils/api";
-
-import { reaction } from "mobx";
+import { getFirstImageUrl } from "services/api";
 import Loader from "components/ui/Loader";
+import Pagination from "components/ui/Pagination/Pagination";
 
 const RecipeListSection = () => {
   const navigate = useNavigate();
@@ -17,7 +16,7 @@ const RecipeListSection = () => {
   const { recipeStore, favoritesStore } = useStore();
   const [searchInput, setSearchInput] = useState(recipeStore.searchTerm);
 
-  // Восстановление из URL
+
   useEffect(() => {
     const search = searchParams.get("search") || "";
     const category = searchParams.get("category") || "0";
@@ -43,31 +42,7 @@ const RecipeListSection = () => {
       .join(" + ");
   };
 
-  const renderPaginationItems = () => {
-    const items = [];
-    const maxVisible = 5;
-    const totalPages = recipeStore.totalPages;
-
-    if (totalPages <= maxVisible) {
-      for (let i = 1; i <= totalPages; i++) {
-        items.push({ page: i, active: i === recipeStore.currentPage });
-      }
-    } else {
-      items.push({ page: 1, active: recipeStore.currentPage === 1 });
-      if (recipeStore.currentPage > 3) items.push({ page: "...", active: false });
-
-      const start = Math.max(2, recipeStore.currentPage - 1);
-      const end = Math.min(totalPages - 1, recipeStore.currentPage + 1);
-      for (let i = start; i <= end; i++) {
-        items.push({ page: i, active: i === recipeStore.currentPage });
-      }
-
-      if (recipeStore.currentPage < totalPages - 2) items.push({ page: "...", active: false });
-      items.push({ page: totalPages, active: recipeStore.currentPage === totalPages });
-    }
-
-    return items;
-  };
+  const changePage = (page: number) => recipeStore.setCurrentPage(page);
 
 
   const CATEGORY_OPTIONS = [
@@ -86,7 +61,7 @@ const RecipeListSection = () => {
 
 
 
-  // Кнопка "Поиск"
+
   const handleSearchClick = () => {
     recipeStore.setSearchTerm(searchInput);
     recipeStore.setCurrentPage(1); // сброс на первую страницу
@@ -96,7 +71,7 @@ const RecipeListSection = () => {
 
   return (
     <section className={styles.container}>
-      {/* Заголовок */}
+
       <div className={styles.headerText}>
         Find the perfect food and{" "}
         <span className={styles.underline}>drink ideas</span> for every occasion, from{" "}
@@ -104,7 +79,7 @@ const RecipeListSection = () => {
         <span className={styles.underline}>holiday feasts</span>.
       </div>
 
-      {/* Поиск и фильтр */}
+
       <div className={styles.filters}>
         <div className={styles.searchRow}>
           <Input
@@ -134,8 +109,8 @@ const RecipeListSection = () => {
                   : [{ key: "", value: "Все категории" }]
               }
               onChange={(options) => {
-                const selectedKey = options[0]?.key || ""; // ← если нет выбора — ""
-                recipeStore.setCategoryId(selectedKey);   // сохраняем ""
+                const selectedKey = options[0]?.key || "";
+                recipeStore.setCategoryId(selectedKey);
               }}
               getTitle={() => {
                 const selected = CATEGORY_OPTIONS.find(
@@ -152,7 +127,7 @@ const RecipeListSection = () => {
         </div>
       </div>
 
-      {/* Сетка карточек */}
+
       <div className={styles.cardsGrid}>
         {recipeStore.recipes.map((recipe) => {
           const imageUrl = getFirstImageUrl(recipe) || "https://via.placeholder.com/360x180?text=No+Image";
@@ -167,14 +142,7 @@ const RecipeListSection = () => {
               contentSlot={<span>{recipe.calories} kcal</span>}
               actionSlot={
                 <button
-                  style={{
-                    minHeight: "52px",
-                    padding: "0.875rem 1.25rem",
-                    backgroundColor: "#b5460f",
-                    border: "none",
-                    borderRadius: "8px",
-                    cursor: "pointer",
-                  }}
+                  className={styles.saveBtn}
                   onClick={(e) => {
                     e.stopPropagation();
                     favoritesStore.toggle(recipe.documentId);
@@ -192,44 +160,17 @@ const RecipeListSection = () => {
         })}
       </div>
 
-      {/* Пагинация */}
-      <div className={styles.pagination}>
-        <button
-          className={styles.paginationButton}
-          onClick={() => recipeStore.setCurrentPage(recipeStore.currentPage - 1)}
-          disabled={recipeStore.currentPage === 1}
-          aria-label="Previous page"
-        >
-          <img src='/arrowleft.svg' alt="Previous" width="32" height="32" />
-        </button>
 
-        <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
-          {renderPaginationItems().map((item, index) => (
-            <div key={index}>
-              {item.page === "..." ? (
-                <span className={styles.dots}>...</span>
-              ) : (
-                <button
-                  className={`${styles.pageNumber} ${item.active ? styles["pageNumber active"] : ""}`}
-                  onClick={() => recipeStore.setCurrentPage(Number(item.page))}
-                  disabled={item.active}
-                >
-                  {item.page}
-                </button>
-              )}
-            </div>
-          ))}
-        </div>
-
-        <button
-          className={styles.paginationButton}
-          onClick={() => recipeStore.setCurrentPage(recipeStore.currentPage + 1)}
-          disabled={recipeStore.currentPage >= recipeStore.totalPages}
-          aria-label="Next page"
-        >
-          <img src='/arrowright.svg' alt="Next" width="32" height="32" />
-        </button>
-      </div>
+      <Pagination
+        current={recipeStore.currentPage}
+        total={recipeStore.totalPages}
+        onChange={changePage}
+        prevIcon={<img src='/arrowleft.svg' alt="Previous" width="32" height="32" />}
+        nextIcon={<img src='/arrowright.svg' alt="Next" width="32" height="32" />}
+        className={styles.pagination}
+        pageClassName={styles.pageNumber}
+        dotsClassName={styles.dots}
+      />
     </section>
   );
 };

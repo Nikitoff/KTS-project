@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./NavigationMenu.module.css";
+import styles from "./NavigationMenu.module.scss";
 import { useNavigate } from "react-router-dom";
 
 const NavigationMenu = () => {
@@ -14,7 +14,6 @@ const NavigationMenu = () => {
 
   return (
     <nav className={styles.navbar}>
-      {/* Логотип */}
       <img
         src="/logo-simple-framed-green-gradient 1.svg"
         alt="Logo"
@@ -24,7 +23,6 @@ const NavigationMenu = () => {
         <span className={styles.logoText}>Food Client</span>
       </div>
 
-      {/* Иконка пользователя */}
       <img
         src="/userIcon.svg"
         alt="Logo"
@@ -36,16 +34,13 @@ const NavigationMenu = () => {
         alt="fav"
         onClick={() => navigate("/favorites")}
         className={styles.heartIcon}
+        style={{ cursor: "pointer" }}
       />
 
-      {/* Меню навигации */}
       <div className={styles.navMenu}>
         {navItems.map((item) => (
           <div key={item.label} className={styles.navItem}>
-            <a
-              href="#"
-              className={`${styles.navLink} ${item.isActive ? styles["navLink.active"] : ""}`}
-            >
+            <a href="#" className={`${styles.navLink} ${item.isActive ? styles.active : ""}`}>
               {item.label}
             </a>
           </div>

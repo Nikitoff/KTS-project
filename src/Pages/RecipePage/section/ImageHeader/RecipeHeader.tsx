@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./Recipeheader.module.css";
+import styles from "./RecipeHeader.module.scss";
 
 interface RecipeHeaderProps {
     imageUrl: string;

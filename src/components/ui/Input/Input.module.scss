@@ -1,9 +1,10 @@
+@use "styles/variables" as *;
+
 .inputContainer {
     position: relative;
     display: flex;
     align-items: center;
-    gap: 20px;
-    /* ← отступ между инпутом и кнопкой */
+    gap: $spacing-4;
     width: 100%;
     height: 52px;
 }
@@ -12,13 +13,13 @@
     flex: 1;
     min-width: 0;
     padding: 17px 12px;
-    background: #ffffff;
-    border: 1px solid #ffffff;
-    border-radius: 10px;
+    background: $color-surface;
+    border: 1px solid $color-border;
+    border-radius: $radius-md;
     font-family: 'Roboto', sans-serif;
-    font-size: 14px;
+    font-size: $font-size-sm;
     line-height: 16px;
-    color: #7e7e7e;
+    color: $color-text-muted;
     outline: none;
 }
 

@@ -28,8 +28,11 @@
       "styles": [
         "styles/*"
       ],
-      "utils": [
-        "utils/*"
+      "services": [
+        "services/*"
+      ],
+      "stores": [
+        "stores/*"
       ],
       "App": [
         "App/*"

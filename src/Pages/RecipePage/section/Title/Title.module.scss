@@ -1,7 +1,9 @@
+@use "styles/variables" as *;
+
 .titleContainer {
     display: flex;
     align-items: center;
-    gap: 16px;
+    gap: $spacing-4;
     margin: 0 0 24px 0;
     /* отступ снизу */
 }
@@ -27,7 +29,7 @@
     font-weight: 700;
     font-size: 44px;
     line-height: 48px;
-    color: #000000;
+    color: $color-text;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;

@@ -1,21 +1,19 @@
-/* ingredients-equipment.module.css */
+@use "styles/variables" as *;
 
 .container {
     width: 100%;
     max-width: 1329px;
     margin: 48px auto 0;
-    padding: 0 16px;
-    margin-left: 0px
+    padding: 0 $spacing-md;
 }
 
 .title {
-    font-family: 'Roboto';
-    font-style: normal;
+    font-family: $font-base;
     font-weight: 600;
-    font-size: 20px;
+    font-size: $font-size-xl;
     line-height: 24px;
-    color: #000000;
-    margin-bottom: 24px;
+    color: $color-primary;
+    margin-bottom: $spacing-6;
 }
 
 .grid {
@@ -24,18 +22,16 @@
     position: relative;
 }
 
-/* Вертикальная линия между секциями */
 .divider {
     position: absolute;
     left: calc(50% - 1px);
     top: 0;
     bottom: 0;
     width: 1px;
-    background: #b5460f;
+    background: $color-brand;
     z-index: 0;
 }
 
-/* Маленький кружок сверху линии */
 .marker {
     position: absolute;
     left: 50%;
@@ -43,12 +39,11 @@
     transform: translateX(-50%);
     width: 7px;
     height: 7px;
-    background: #b5460f;
+    background: $color-brand;
     border-radius: 50%;
     z-index: 1;
 }
 
-/* Колонки для ингредиентов и оборудования */
 .columnWrapper {
     position: relative;
     z-index: 1;
@@ -63,28 +58,25 @@
     max-width: 100%;
 }
 
-/* Сетка из двух колонок */
 .twoColumnGrid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 16px;
+    gap: $spacing-md;
 }
 
 .item {
     display: flex;
     align-items: center;
-    gap: 16px;
+    gap: $spacing-md;
     min-width: 0;
-    /* Для корректной обрезки текста */
 }
 
 .text {
-    font-family: 'Roboto';
-    font-style: normal;
+    font-family: $font-base;
     font-weight: 400;
-    font-size: 16px;
+    font-size: $font-size-md;
     line-height: 20px;
-    color: #000000;
+    color: $color-text;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;

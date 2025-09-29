@@ -1,3 +1,6 @@
+@use "styles/variables" as *;
+@use "../../../../Font/fonts.css" as *;
+
 .container {
     display: flex;
     flex-direction: column;
@@ -28,7 +31,6 @@
     flex-direction: column;
     align-items: center;
     gap: 8px;
-    /* отступ между строками */
     width: 1237px;
     margin: 0 auto;
 }
@@ -39,7 +41,6 @@
     width: 100%;
     max-width: 1237px;
     position: relative;
-    /* ← важно для absolute */
 }
 
 .inputField {
@@ -50,7 +51,7 @@
     border: 1px solid #ffffff;
     border-radius: 10px;
     font-family: 'Roboto', sans-serif;
-    font-size: 14px;
+    font-size: $font-size-sm;
     line-height: 16px;
     color: #7e7e7e;
     outline: none;
@@ -59,7 +60,7 @@
 .searchButton {
     width: 64px;
     height: 52px;
-    background: #b5460f;
+    background: $color-brand;
     border: none;
     border-radius: 10px;
     cursor: pointer;
@@ -87,7 +88,7 @@
 }
 
 .searchButton:hover {
-    background-color: #a03d0d;
+    background-color: $color-brand-dark;
 }
 
 .selectWrapper {
@@ -109,10 +110,6 @@
     display: flex;
     align-items: center;
     color: #333;
-}
-
-.selectTrigger:focus {
-    border-color: #ccc;
 }
 
 .selectArrow {
@@ -168,16 +165,19 @@
     max-width: 1240px;
 }
 
-@media (min-width: 640px) {
-    .cardsGrid {
-        grid-template-columns: repeat(2, 1fr);
-    }
+.saveBtn {
+    height: 52px;
+    padding: 0.875rem 1.25rem;
+    background: $color-brand;
+    border: none;
+    border-radius: $radius-md;
+    cursor: pointer;
 }
 
-@media (min-width: 1024px) {
-    .cardsGrid {
-        grid-template-columns: repeat(3, 1fr);
-    }
+.btnText {
+    color: $color-surface;
+    font-family: $font-base;
+    font-size: $font-size-md;
 }
 
 @media (min-width: 640px) {
@@ -221,9 +221,9 @@
 .pageNumber {
     width: 39.5px;
     height: 43.5px;
-    border: 1.5px solid #f7e8d7;
-    border-radius: 8px;
-    background: white;
+    border: 1.5px solid $color-border;
+    border-radius: $radius-sm;
+    background: $color-surface;
     font-size: 1rem;
     cursor: pointer;
     transition: background 0.2s;
@@ -234,9 +234,9 @@
 }
 
 .pageNumber.active {
-    background-color: #b5460f;
+    background-color: $color-brand;
     color: white;
-    border-color: #b5460f;
+    border-color: $color-brand;
 }
 
 .dots {

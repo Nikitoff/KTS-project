@@ -1,9 +1,9 @@
-/* recipe-header.module.css */
+@use "styles/variables" as *;
 
 .container {
     width: 100%;
-    width: 1077px;
-    margin: 1000 auto;
+    max-width: 1077px;
+    margin: 0 auto;
     display: flex;
     gap: 100px;
     align-items: flex-start;
@@ -13,14 +13,14 @@
     width: 448px;
     height: 298px;
     object-fit: cover;
-    border-radius: 10px;
+    border-radius: $radius-md;
     flex-shrink: 0;
 }
 
 .infoGrid {
     display: grid;
-    grid-template-columns: repeat(3, 3fr);
-    gap: 20px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: $spacing-md;
     width: 463px;
     height: 146px;
     margin-top: 75px;
@@ -36,18 +36,18 @@
 }
 
 .statLabel {
-    font-family: 'Roboto';
-    font-size: 16px;
+    font-family: $font-base;
+    font-size: $font-size-md;
     line-height: 20px;
-    color: #000000;
+    color: $color-text;
     text-align: center;
 }
 
 .statValue {
-    font-family: 'Roboto';
+    font-family: $font-base;
     font-weight: 600;
-    font-size: 16px;
+    font-size: $font-size-md;
     line-height: 20px;
-    color: #b5460f;
+    color: $color-brand;
     text-align: center;
 }

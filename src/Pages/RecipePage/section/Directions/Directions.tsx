@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./directions.module.css";
+import styles from "./directions.module.scss"
 
 interface Step {
     id: number;
