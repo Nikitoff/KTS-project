@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./Recipeheader.module.css";
+import styles from "./RecipeHeader.module.scss";
 
 interface RecipeHeaderProps {
     imageUrl: string;
@@ -28,7 +28,7 @@ const RecipeHeader: React.FC<RecipeHeaderProps> = ({
 }) => {
     return (
         <div className={styles.container}>
-            {/* Главное изображение */}
+
             <img
                 src={imageUrl}
                 alt="Рецепт"
@@ -38,27 +38,26 @@ const RecipeHeader: React.FC<RecipeHeaderProps> = ({
                 }}
             />
 
-            {/* Статистика */}
             <div className={styles.infoGrid}>
-                {/* Время приготовления */}
+
                 <div className={styles.stat}>
                     <span className={styles.statLabel}>Preparation</span>
                     <span className={styles.statValue}>{PrepTime + ' minutes'}</span>
                 </div>
 
-                {/* Порции */}
+
                 <div className={styles.stat}>
                     <span className={styles.statLabel}>Cooking</span>
                     <span className={styles.statValue}>{CookingTime + ' minutes'}</span>
                 </div>
 
-                {/* Калории */}
+
                 <div className={styles.stat}>
                     <span className={styles.statLabel}>Total</span>
                     <span className={styles.statValue}>{totalTime + ' minutes'}</span>
                 </div>
 
-                {/* Лайки */}
+
                 <div className={styles.stat}>
                     <span className={styles.statLabel}>Лайки</span>
                     <span className={styles.statValue}>{likes}</span>
@@ -69,7 +68,7 @@ const RecipeHeader: React.FC<RecipeHeaderProps> = ({
                     <span className={styles.statValue}>{servings + ' servings'}</span>
                 </div>
 
-                {/* Рейтинг */}
+
                 <div className={styles.stat}>
                     <span className={styles.statLabel}>Rating</span>
                     <span className={styles.statValue}>{rating}</span>

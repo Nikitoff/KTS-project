@@ -1,0 +1,36 @@
+.loader {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.loader_size_s {
+    width: 24px;
+    height: 24px;
+}
+
+.loader_size_m {
+    width: 48px;
+    height: 48px;
+}
+
+.loader_size_l {
+    width: 60px;
+    height: 60px;
+}
+
+.animatedSvg {
+    animation: rotate 1s linear infinite;
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}

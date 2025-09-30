@@ -1,9 +1,11 @@
 import React from "react";
-import styles from "./IngredientsEquip.module.css";
+import styles from "./IngredientsEquip.module.scss";
 
 interface Ingredient {
     id: number | string;
     name: string;
+    amount: number;
+    unit: string;
 }
 
 interface Equipment {
@@ -21,22 +23,24 @@ const IngredientsEquip: React.FC<IngredientsEquipProps> = ({ ingredients, equipm
         <div className={styles.container}>
 
 
-            {/* Две основные колонки: Ингредиенты и Оборудование */}
+
             <div className={styles.grid}>
-                {/* Левая часть: Ингредиенты в 2 колонки */}
+
                 <div className={styles.columnWrapper}>
                     <h2 className={styles.title}>Ingredients</h2>
                     <div className={styles.twoColumnGrid}>
                         {ingredients.map((ing) => (
+                            console.log(ing),
                             <div key={ing.id} className={styles.item}>
                                 <img src="/IngredientsIcon.svg"></img>
-                                <span className={styles.text}>{ing.name}</span>
+
+                                <span className={styles.text}>{ing.amount} {ing.unit} {ing.name}</span>
                             </div>
                         ))}
                     </div>
                 </div>
 
-                {/* Правая часть: Оборудование в 2 колонки */}
+
                 <div className={styles.equipmentWrapper}>
                     <h2 className={styles.title}>Equipment</h2>
                     <div className={styles.twoColumnGrid}>
@@ -49,7 +53,7 @@ const IngredientsEquip: React.FC<IngredientsEquipProps> = ({ ingredients, equipm
                     </div>
                 </div>
 
-                {/* Разделитель и маркер */}
+
                 <div className={styles.divider}></div>
                 <div className={styles.marker}></div>
             </div>

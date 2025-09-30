@@ -1,0 +1,329 @@
+@use "styles/variables" as *;
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: $spacing-12;
+    padding: $spacing-6 $spacing-4;
+    width: 100%;
+    max-width: $container-2xl;
+    margin: 0 auto;
+}
+
+.headerText {
+    max-width: 886px;
+    text-align: center;
+    color: $color-text;
+    font-family: $font-base;
+    font-size: $font-size-xl;
+    line-height: 1.5;
+    font-weight: 400;
+    margin-top: $spacing-5;
+}
+
+.underline {
+    text-decoration: underline;
+}
+
+.filters {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: $spacing-2;
+    width: 100%;
+    max-width: 1237px;
+}
+
+.searchRow {
+    display: flex;
+    gap: $spacing-2;
+    width: 100%;
+    position: relative;
+}
+
+.inputField {
+    flex: 1;
+    height: $control-height;
+    padding: $spacing-3 $spacing-3;
+    background: $color-surface;
+    border: 1px solid $color-border;
+    border-radius: $radius-md;
+    font-family: $font-base;
+    font-size: $font-size-sm;
+    line-height: 1;
+    color: $color-text-muted;
+    outline: none;
+    transition: border-color 0.2s ease;
+
+    &:focus {
+        border-color: $color-primary;
+    }
+
+    &::placeholder {
+        color: $color-text-muted;
+    }
+}
+
+.searchButton {
+    width: 4rem; // 64px
+    height: $control-height;
+    background: $color-brand;
+    border: none;
+    border-radius: $radius-md;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s ease;
+
+    &:hover {
+        background-color: $color-brand-dark;
+    }
+
+    img,
+    svg {
+        width: $icon-md;
+        height: $icon-md;
+        filter: brightness(1);
+    }
+}
+
+.dropdownRow {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.categoryDropdown {
+    width: 300px;
+    height: $control-height;
+}
+
+.selectWrapper {
+    width: 300px;
+    position: relative;
+}
+
+.selectTrigger {
+    height: $control-height;
+    padding: $spacing-3 $spacing-4;
+    background-color: #f9f9f9;
+    border: 1px solid $color-border;
+    border-radius: $radius-md;
+    font-family: $font-base;
+    font-size: $font-size-md;
+    cursor: pointer;
+    width: 100%;
+    outline: none;
+    appearance: none;
+    display: flex;
+    align-items: center;
+    color: $color-text;
+    transition: border-color 0.2s ease;
+
+    &:focus {
+        border-color: $color-primary;
+    }
+}
+
+.selectArrow {
+    position: absolute;
+    right: $spacing-4;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    width: 0.75rem;
+    height: 0.75rem;
+    border-right: 2px solid #888;
+    border-bottom: 2px solid #888;
+    transform-origin: center;
+    transition: transform 0.2s ease;
+}
+
+.selectOpen .selectArrow {
+    transform: translateY(-50%) rotate(45deg);
+}
+
+.selectContent {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: $color-surface;
+    border: 1px solid $color-border;
+    border-radius: $radius-sm;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+    margin-top: $spacing-2;
+    max-height: 12.5rem; // 200px
+    overflow-y: auto;
+}
+
+.selectItem {
+    padding: $spacing-3 $spacing-4;
+    cursor: pointer;
+    font-family: $font-base;
+    font-size: $font-size-md;
+    color: $color-text;
+    transition: background-color 0.2s ease;
+
+
+}
+
+.cardsGrid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: $spacing-8;
+    width: 100%;
+    max-width: 1240px;
+}
+
+.saveBtn {
+    height: $control-height;
+    padding: $spacing-3 $spacing-5;
+    background: $color-brand;
+    border: none;
+    border-radius: $radius-md;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+
+    &:hover {
+        background-color: $color-brand-dark;
+    }
+}
+
+.btnText {
+    color: $color-surface;
+    font-family: $font-base;
+    font-size: $font-size-md;
+}
+
+// Responsive grid
+@media (min-width: $breakpoint-sm) {
+    .cardsGrid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: $breakpoint-lg) {
+    .cardsGrid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+// Mobile adjustments
+@media (max-width: $breakpoint-md) {
+    .container {
+        padding: $spacing-4 $spacing-2;
+        gap: $spacing-8;
+    }
+
+    .filters {
+        width: 100%;
+    }
+
+    .dropdownRow {
+        justify-content: center;
+    }
+
+    .categoryDropdown,
+    .selectWrapper {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .searchRow {
+        flex-direction: column;
+        gap: $spacing-3;
+    }
+
+    .inputField {
+        width: 100%;
+    }
+
+    .searchButton {
+        width: 100%;
+        max-width: 300px;
+    }
+}
+
+.pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: $spacing-3;
+    width: 100%;
+    max-width: 1240px;
+    margin-top: $spacing-8;
+}
+
+.paginationButton {
+    width: 38px;
+    height: 42px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    transition: opacity 0.2s ease;
+
+    &:hover:not([disabled]) {
+        opacity: 0.7;
+    }
+
+    &[disabled] {
+        opacity: 0.4;
+        cursor: not-allowed;
+    }
+}
+
+.pageNumber {
+    width: 39.5px;
+    height: 43.5px;
+    border: 1.5px solid $color-border;
+    border-radius: $radius-sm;
+    background: $color-surface;
+    font-family: $font-base;
+    font-size: $font-size-md;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover:not([disabled]) {
+        background-color: #f5f5f5;
+        border-color: $color-primary;
+    }
+
+    &.active {
+        background-color: $color-brand;
+        color: $color-surface;
+        border-color: $color-brand;
+    }
+}
+
+.dots {
+    padding: 0 $spacing-2;
+    color: #666;
+    font-family: $font-base;
+    font-size: $font-size-xl;
+    display: flex;
+    align-items: center;
+}
+
+.loadingError {
+    padding: $spacing-8;
+    text-align: center;
+    color: $color-text;
+    font-family: $font-base;
+    font-size: $font-size-lg;
+}
+
+.errorText {
+    color: #dc2626; // red-600
+    font-weight: 500;
+}

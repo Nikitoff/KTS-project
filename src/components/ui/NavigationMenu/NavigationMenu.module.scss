@@ -1,0 +1,132 @@
+@use "styles/variables" as *;
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 64px;
+    background: $color-surface;
+    z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navbarContent {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    max-width: $container-2xl;
+    margin: 0 auto;
+    padding: 0 $spacing-4;
+}
+
+.logoWrapper {
+    display: flex;
+    align-items: center;
+    gap: $spacing-2;
+    flex-shrink: 0;
+}
+
+.logoText {
+    font-family: $font-base;
+    font-weight: 700;
+    font-size: $font-size-xl;
+    line-height: 1.2;
+    color: $color-text;
+}
+
+.logoIcon {
+    width: 36px;
+    height: 36px;
+    flex-shrink: 0;
+}
+
+.navMenu {
+    display: flex;
+    gap: $spacing-4;
+    flex: 1;
+    justify-content: center;
+
+    @media (max-width: $breakpoint-md) {
+        display: none;
+    }
+}
+
+.navItem {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.navLink {
+    font-family: $font-base;
+    font-weight: 400;
+    font-size: $font-size-md;
+    line-height: 1.25;
+    color: $color-text;
+    text-decoration: none;
+    padding: $spacing-2 $spacing-3;
+    border-radius: $radius-sm;
+    transition: all 0.2s ease;
+
+
+}
+
+.navActions {
+    display: flex;
+    align-items: center;
+    gap: $spacing-3;
+    flex-shrink: 0;
+}
+
+.userIcon,
+.heartIcon {
+    width: $icon-md;
+    height: $icon-md;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+
+    &:hover {
+        opacity: 0.7;
+    }
+}
+
+.heartIcon {
+    width: 17px;
+    height: 17px;
+}
+
+// Mobile menu toggle (if needed)
+.mobileMenuToggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: $spacing-2;
+
+    @media (max-width: $breakpoint-md) {
+        display: block;
+    }
+}
+
+.mobileMenu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: $color-surface;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: none;
+    flex-direction: column;
+    padding: $spacing-4;
+    gap: $spacing-2;
+
+    &.open {
+        display: flex;
+    }
+
+    @media (min-width: $breakpoint-md) {
+        display: none !important;
+    }
+}

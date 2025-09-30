@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./Card.module.css";
+import styles from "./Card.module.scss";
 
 export type CardProps = {
     className?: string;
@@ -35,13 +35,13 @@ const Card: React.FC<CardProps> = ({
                 }
             }}
         >
-            {/* Header */}
+
             <div className={styles.cardHeader}>
                 <div className={styles.cardImagePlaceholder} />
                 <img src={image} alt="recipe" className={styles.cardImage} />
             </div>
 
-            {/* Body */}
+
             <div className={styles.cardBody}>
                 <div className={styles.cardContent}>
                     {captionSlot && <div className={styles.cardCaption}>{captionSlot}</div>}

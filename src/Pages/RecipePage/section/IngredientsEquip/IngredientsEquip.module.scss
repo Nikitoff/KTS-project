@@ -1,0 +1,83 @@
+@use "styles/variables" as *;
+
+.container {
+    width: 100%;
+    max-width: 1329px;
+    margin: 48px auto 0;
+    padding: 0 $spacing-5;
+}
+
+.title {
+    font-family: $font-base;
+    font-weight: 600;
+    font-size: $font-size-xl;
+    line-height: 24px;
+    color: $color-primary;
+    margin-bottom: $spacing-6;
+}
+
+.grid {
+    display: flex;
+    gap: 72px;
+    position: relative;
+}
+
+.divider {
+    position: absolute;
+    left: calc(50% - 1px);
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: $color-brand;
+    z-index: 0;
+}
+
+.marker {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+    width: 7px;
+    height: 7px;
+    background: $color-brand;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.columnWrapper {
+    position: relative;
+    z-index: 1;
+    width: 628px;
+    max-width: 100%;
+}
+
+.equipmentWrapper {
+    position: relative;
+    z-index: 1;
+    width: 664px;
+    max-width: 100%;
+}
+
+.twoColumnGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: $spacing-5;
+}
+
+.item {
+    display: flex;
+    align-items: center;
+    gap: $spacing-5;
+    min-width: 0;
+}
+
+.text {
+    font-family: $font-base;
+    font-weight: 400;
+    font-size: $font-size-md;
+    line-height: 20px;
+    color: $color-text;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

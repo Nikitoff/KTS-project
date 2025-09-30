@@ -1,7 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
-import styles from "./MultiDropdown.module.css";
-import ArrowDownIcon from "../Icon/ArrowDownIcon"; // предположим, что у тебя есть такой компонент
-
+import styles from "./MultiDropdown.module.scss";
+import ArrowDownIcon from "../Icon/ArrowDownIcon";
 export type Option = {
   key: string;
   value: string;
