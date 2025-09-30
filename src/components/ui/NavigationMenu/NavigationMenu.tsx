@@ -14,37 +14,39 @@ const NavigationMenu = () => {
 
   return (
     <nav className={styles.navbar}>
-      <img
-        src="/logo-simple-framed-green-gradient 1.svg"
-        alt="Logo"
-        className={styles.logoIcon}
-      />
-      <div className={styles.logoWrapper}>
-        <span className={styles.logoText}>Food Client</span>
-      </div>
+      <div className={styles.navbarContent}>
+        <div className={styles.logoWrapper}>
+          <img
+            src="/logo-simple-framed-green-gradient 1.svg"
+            alt="Logo"
+            className={styles.logoIcon}
+          />
+          <span className={styles.logoText}>Food Client</span>
+        </div>
 
-      <img
-        src="/userIcon.svg"
-        alt="Logo"
-        className={styles.userIcon}
-      />
+        <div className={styles.navMenu}>
+          {navItems.map((item) => (
+            <div key={item.label} className={styles.navItem}>
+              <a href="#" className={`${styles.navLink} ${item.isActive ? styles.active : ""}`}>
+                {item.label}
+              </a>
+            </div>
+          ))}
+        </div>
 
-      <img
-        src="/heart.svg"
-        alt="fav"
-        onClick={() => navigate("/favorites")}
-        className={styles.heartIcon}
-        style={{ cursor: "pointer" }}
-      />
-
-      <div className={styles.navMenu}>
-        {navItems.map((item) => (
-          <div key={item.label} className={styles.navItem}>
-            <a href="#" className={`${styles.navLink} ${item.isActive ? styles.active : ""}`}>
-              {item.label}
-            </a>
-          </div>
-        ))}
+        <div className={styles.navActions}>
+          <img
+            src="/heart.svg"
+            alt="favorites"
+            onClick={() => navigate("/favorites")}
+            className={styles.heartIcon}
+          />
+          <img
+            src="/userIcon.svg"
+            alt="user"
+            className={styles.userIcon}
+          />
+        </div>
       </div>
     </nav>
   );

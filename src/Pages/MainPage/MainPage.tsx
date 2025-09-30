@@ -15,10 +15,13 @@ const MainPage = () => {
     const category = searchParams.get("category") || "";
     const page = Number(searchParams.get("page")) || 1;
 
-    recipeStore.setSearchTerm(search);
-    recipeStore.setCategoryId(category);
-    recipeStore.setCurrentPage(page);
-  }, []);
+
+    if (recipeStore && recipeStore.initialized) {
+      recipeStore.setSearchTerm(search);
+      recipeStore.setCategoryId(category);
+      recipeStore.setCurrentPage(page);
+    }
+  }, [recipeStore, searchParams]);
 
 
   useEffect(() => {

@@ -11,7 +11,7 @@ const Title: React.FC<RecipeTitleProps> = ({ title }) => {
 
     return (
         <div className={styles.titleContainer}>
-            {/* Кнопка "Назад" */}
+
             <button
                 onClick={() => navigate("/")}
                 className={styles.backButton}
@@ -20,7 +20,7 @@ const Title: React.FC<RecipeTitleProps> = ({ title }) => {
                 <img src="/arrowleft.svg"></img>
             </button>
 
-            {/* Заголовок */}
+
             <h1 className={styles.titleText}>{title}</h1>
         </div>
     );

@@ -7,27 +7,35 @@ $color-surface: #ffffff;
 $color-border: #f7e8d7;
 $color-bg: #FFC0763B;
 
-// Typography
-$font-base: 'Roboto';
-$font-size-sm: 14;
-$font-size-md: 16;
-$font-size-xl: 20;
 
-// Spacing
-$spacing-1: 4px;
+$font-base: 'Roboto', sans-serif;
+$font-size-sm: 14px;
+$font-size-md: 16px;
+$font-size-lg: 18px;
+$font-size-xl: 20px;
+
+
 $spacing-2: 8px;
 $spacing-3: 12px;
 $spacing-4: 16px;
-$spacing-md: 20px;
 $spacing-5: 20px;
 $spacing-6: 24px;
+$spacing-8: 32px;
+$spacing-12: 48px;
 
 
-// Radii
 $radius-sm: 8px;
 $radius-md: 10px;
 $radius-lg: 12px;
 
-// Sizes
+
 $control-height: 52px;
 $icon-md: 24px;
+
+
+$breakpoint-sm: 640px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 1024px;
+
+
+$container-2xl: 1440px;

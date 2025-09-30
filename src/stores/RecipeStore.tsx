@@ -8,6 +8,7 @@ export class RecipeStore {
     categories: any[] = [];
     loading = false;
     error: string | null = null;
+    initialized = false;
 
     searchTerm = "";
     categoryId = "";
@@ -17,8 +18,6 @@ export class RecipeStore {
 
     constructor() {
         makeAutoObservable(this);
-        this.loadCategories();
-        this.loadRecipes();
     }
 
     loadRecipes = async () => {
@@ -78,6 +77,15 @@ export class RecipeStore {
     setCurrentPage = (page: number) => {
         this.currentPage = page;
         this.loadRecipes();
+    };
+
+    // Метод для инициализации данных
+    initialize = async () => {
+        await Promise.all([
+            this.loadCategories(),
+            this.loadRecipes()
+        ]);
+        this.initialized = true;
     };
 }
 

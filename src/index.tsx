@@ -2,6 +2,7 @@ import * as React from 'react';
 import * as ReactDom from 'react-dom/client';
 import { BrowserRouter } from "react-router-dom";
 import "./config/configureMobX"
+import "./styles/global.scss"
 import App from 'App/App';
 
 

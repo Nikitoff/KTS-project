@@ -23,9 +23,9 @@ const IngredientsEquip: React.FC<IngredientsEquipProps> = ({ ingredients, equipm
         <div className={styles.container}>
 
 
-            {/* Две основные колонки: Ингредиенты и Оборудование */}
+
             <div className={styles.grid}>
-                {/* Левая часть: Ингредиенты в 2 колонки */}
+
                 <div className={styles.columnWrapper}>
                     <h2 className={styles.title}>Ingredients</h2>
                     <div className={styles.twoColumnGrid}>
@@ -40,7 +40,7 @@ const IngredientsEquip: React.FC<IngredientsEquipProps> = ({ ingredients, equipm
                     </div>
                 </div>
 
-                {/* Правая часть: Оборудование в 2 колонки */}
+
                 <div className={styles.equipmentWrapper}>
                     <h2 className={styles.title}>Equipment</h2>
                     <div className={styles.twoColumnGrid}>
@@ -53,7 +53,7 @@ const IngredientsEquip: React.FC<IngredientsEquipProps> = ({ ingredients, equipm
                     </div>
                 </div>
 
-                {/* Разделитель и маркер */}
+
                 <div className={styles.divider}></div>
                 <div className={styles.marker}></div>
             </div>

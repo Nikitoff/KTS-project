@@ -1,25 +1,25 @@
 @use "styles/variables" as *;
-@use "../../../../Font/fonts.css" as *;
 
 .container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 3rem;
-    padding: 0 1rem;
+    gap: $spacing-12;
+    padding: $spacing-6 $spacing-4;
     width: 100%;
+    max-width: $container-2xl;
+    margin: 0 auto;
 }
 
 .headerText {
-
     max-width: 886px;
     text-align: center;
-    color: #000;
-    font-size: 1.25rem;
-    line-height: 1.5rem;
-    font-weight: normal;
-    gap: 10px;
-    margin-top: 20px;
+    color: $color-text;
+    font-family: $font-base;
+    font-size: $font-size-xl;
+    line-height: 1.5;
+    font-weight: 400;
+    margin-top: $spacing-5;
 }
 
 .underline {
@@ -30,65 +30,74 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 8px;
-    width: 1237px;
-    margin: 0 auto;
+    gap: $spacing-2;
+    width: 100%;
+    max-width: 1237px;
 }
 
 .searchRow {
     display: flex;
-    gap: 8px;
+    gap: $spacing-2;
     width: 100%;
-    max-width: 1237px;
     position: relative;
 }
 
 .inputField {
     flex: 1;
-    height: 52px;
-    padding: 14px 12px;
-    background: #ffffff;
-    border: 1px solid #ffffff;
-    border-radius: 10px;
-    font-family: 'Roboto', sans-serif;
+    height: $control-height;
+    padding: $spacing-3 $spacing-3;
+    background: $color-surface;
+    border: 1px solid $color-border;
+    border-radius: $radius-md;
+    font-family: $font-base;
     font-size: $font-size-sm;
-    line-height: 16px;
-    color: #7e7e7e;
+    line-height: 1;
+    color: $color-text-muted;
     outline: none;
+    transition: border-color 0.2s ease;
+
+    &:focus {
+        border-color: $color-primary;
+    }
+
+    &::placeholder {
+        color: $color-text-muted;
+    }
 }
 
 .searchButton {
-    width: 64px;
-    height: 52px;
+    width: 4rem; // 64px
+    height: $control-height;
     background: $color-brand;
     border: none;
-    border-radius: 10px;
+    border-radius: $radius-md;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-}
+    transition: background-color 0.2s ease;
 
-.searchButton img,
-.searchButton svg {
-    width: 24px;
-    height: 24px;
-    filter: brightness(1);
+    &:hover {
+        background-color: $color-brand-dark;
+    }
+
+    img,
+    svg {
+        width: $icon-md;
+        height: $icon-md;
+        filter: brightness(1);
+    }
 }
 
 .dropdownRow {
     width: 100%;
     display: flex;
-    justify-content: right;
+    justify-content: flex-end;
 }
 
 .categoryDropdown {
     width: 300px;
-    height: 52px;
-}
-
-.searchButton:hover {
-    background-color: $color-brand-dark;
+    height: $control-height;
 }
 
 .selectWrapper {
@@ -97,32 +106,39 @@
 }
 
 .selectTrigger {
-    height: 52px;
-    padding: 0.875rem 1rem;
+    height: $control-height;
+    padding: $spacing-3 $spacing-4;
     background-color: #f9f9f9;
-    border: 1px solid #fff;
-    border-radius: 10px;
-    font-size: 1rem;
+    border: 1px solid $color-border;
+    border-radius: $radius-md;
+    font-family: $font-base;
+    font-size: $font-size-md;
     cursor: pointer;
     width: 100%;
     outline: none;
     appearance: none;
     display: flex;
     align-items: center;
-    color: #333;
+    color: $color-text;
+    transition: border-color 0.2s ease;
+
+    &:focus {
+        border-color: $color-primary;
+    }
 }
 
 .selectArrow {
     position: absolute;
-    right: 1rem;
+    right: $spacing-4;
     top: 50%;
     transform: translateY(-50%);
     pointer-events: none;
-    width: 12px;
-    height: 12px;
+    width: 0.75rem;
+    height: 0.75rem;
     border-right: 2px solid #888;
     border-bottom: 2px solid #888;
     transform-origin: center;
+    transition: transform 0.2s ease;
 }
 
 .selectOpen .selectArrow {
@@ -134,44 +150,47 @@
     top: 100%;
     left: 0;
     width: 100%;
-    background: white;
-    border: 1px solid #ddd;
-    border-radius: 8px;
+    background: $color-surface;
+    border: 1px solid $color-border;
+    border-radius: $radius-sm;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     z-index: 10;
-    margin-top: 0.25rem;
-    max-height: 200px;
+    margin-top: $spacing-2;
+    max-height: 12.5rem; // 200px
     overflow-y: auto;
 }
 
 .selectItem {
-    padding: 0.75rem 1rem;
+    padding: $spacing-3 $spacing-4;
     cursor: pointer;
-    font-size: 1rem;
-    color: #333;
-}
+    font-family: $font-base;
+    font-size: $font-size-md;
+    color: $color-text;
+    transition: background-color 0.2s ease;
 
-.selectItem:hover,
-.selectItem.active {
-    background-color: #f5f5f5;
-    color: #b5460f;
+
 }
 
 .cardsGrid {
     display: grid;
     grid-template-columns: repeat(1, 1fr);
-    gap: 2rem;
+    gap: $spacing-8;
     width: 100%;
     max-width: 1240px;
 }
 
 .saveBtn {
-    height: 52px;
-    padding: 0.875rem 1.25rem;
+    height: $control-height;
+    padding: $spacing-3 $spacing-5;
     background: $color-brand;
     border: none;
     border-radius: $radius-md;
     cursor: pointer;
+    transition: background-color 0.2s ease;
+
+    &:hover {
+        background-color: $color-brand-dark;
+    }
 }
 
 .btnText {
@@ -180,15 +199,52 @@
     font-size: $font-size-md;
 }
 
-@media (min-width: 640px) {
+// Responsive grid
+@media (min-width: $breakpoint-sm) {
     .cardsGrid {
         grid-template-columns: repeat(2, 1fr);
     }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: $breakpoint-lg) {
     .cardsGrid {
         grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+// Mobile adjustments
+@media (max-width: $breakpoint-md) {
+    .container {
+        padding: $spacing-4 $spacing-2;
+        gap: $spacing-8;
+    }
+
+    .filters {
+        width: 100%;
+    }
+
+    .dropdownRow {
+        justify-content: center;
+    }
+
+    .categoryDropdown,
+    .selectWrapper {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .searchRow {
+        flex-direction: column;
+        gap: $spacing-3;
+    }
+
+    .inputField {
+        width: 100%;
+    }
+
+    .searchButton {
+        width: 100%;
+        max-width: 300px;
     }
 }
 
@@ -196,9 +252,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 15px;
+    gap: $spacing-3;
     width: 100%;
     max-width: 1240px;
+    margin-top: $spacing-8;
 }
 
 .paginationButton {
@@ -211,11 +268,16 @@
     align-items: center;
     justify-content: center;
     padding: 0;
-}
+    transition: opacity 0.2s ease;
 
-.paginationButton[disabled] {
-    opacity: 0.4;
-    cursor: not-allowed;
+    &:hover:not([disabled]) {
+        opacity: 0.7;
+    }
+
+    &[disabled] {
+        opacity: 0.4;
+        cursor: not-allowed;
+    }
 }
 
 .pageNumber {
@@ -224,33 +286,44 @@
     border: 1.5px solid $color-border;
     border-radius: $radius-sm;
     background: $color-surface;
-    font-size: 1rem;
+    font-family: $font-base;
+    font-size: $font-size-md;
     cursor: pointer;
-    transition: background 0.2s;
-}
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-.pageNumber:hover:not([disabled]) {
-    background-color: #f5f5f5;
-}
+    &:hover:not([disabled]) {
+        background-color: #f5f5f5;
+        border-color: $color-primary;
+    }
 
-.pageNumber.active {
-    background-color: $color-brand;
-    color: white;
-    border-color: $color-brand;
+    &.active {
+        background-color: $color-brand;
+        color: $color-surface;
+        border-color: $color-brand;
+    }
 }
 
 .dots {
-    padding: 0 0.5rem;
+    padding: 0 $spacing-2;
     color: #666;
-    font-size: 1.25rem;
+    font-family: $font-base;
+    font-size: $font-size-xl;
+    display: flex;
+    align-items: center;
 }
 
 .loadingError {
-    padding: 2rem;
+    padding: $spacing-8;
     text-align: center;
-    color: #000;
+    color: $color-text;
+    font-family: $font-base;
+    font-size: $font-size-lg;
 }
 
 .errorText {
-    color: red;
+    color: #dc2626; // red-600
+    font-weight: 500;
 }

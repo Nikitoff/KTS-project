@@ -4,46 +4,92 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 64px;
+    min-width: 64px;
     height: $control-height;
-    padding: 0;
+    padding: $spacing-3 $spacing-4;
     background: $color-brand;
     border: none;
     border-radius: $radius-md;
-    color: white;
+    color: $color-surface;
     font-family: $font-base;
-    font-size: 18px;
-    line-height: 18px;
+    font-size: $font-size-lg;
+    font-weight: 400;
+    line-height: 1;
     cursor: pointer;
-    transition: background 0.2s ease;
-}
+    transition: all 0.2s ease;
+    white-space: nowrap;
 
-button.button:disabled {
-    background: $color-brand;
-    color: white;
-    opacity: 0.8;
-    cursor: not-allowed;
+    &:hover:not(:disabled):not(.button_loading) {
+        background: $color-brand-dark;
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba($color-primary, 0.3);
+    }
+
+    &:active:not(:disabled):not(.button_loading) {
+        background: $color-brand-dark;
+        transform: translateY(0);
+        box-shadow: 0 2px 6px rgba($color-primary, 0.2);
+    }
+
+    &:disabled {
+        background: $color-brand;
+        color: $color-surface;
+        opacity: 0.6;
+        cursor: not-allowed;
+        transform: none;
+        box-shadow: none;
+    }
 }
 
 .button_disabled {
     background: $color-brand;
     color: $color-brand;
     cursor: not-allowed;
+    opacity: 0.6;
 }
 
 .button_loading {
     pointer-events: none;
     background: $color-brand;
-}
-
-.button:not(.button_loading):not(:disabled):hover {
-    background: $color-brand-dark;
-}
-
-.button:not(.button_loading):not(:disabled):active {
-    background: $color-brand-dark;
+    opacity: 0.8;
 }
 
 .button__text {
     display: inline;
+    font-weight: inherit;
+}
+
+// Size variants
+.button_small {
+    min-width: auto;
+    height: 40px;
+    padding: $spacing-2 $spacing-3;
+    font-size: $font-size-sm;
+}
+
+.button_large {
+    min-width: 96px;
+    height: 56px;
+    padding: $spacing-4 $spacing-6;
+    font-size: $font-size-xl;
+}
+
+.button_full {
+    width: 100%;
+    min-width: auto;
+}
+
+// Responsive adjustments
+@media (max-width: $breakpoint-sm) {
+    .button {
+        min-width: auto;
+        padding: $spacing-2 $spacing-3;
+        font-size: $font-size-md;
+    }
+
+    .button_large {
+        height: $control-height;
+        padding: $spacing-3 $spacing-4;
+        font-size: $font-size-lg;
+    }
 }

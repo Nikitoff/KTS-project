@@ -3,9 +3,9 @@ import Loader from '../Loader';
 import './Button.module.scss';
 
 export type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
-    /** Состояние загрузки */
+
     loading?: boolean;
-    /** Текст кнопки или дочерние элементы */
+
     children: React.ReactNode;
 };
 
@@ -17,7 +17,7 @@ const Button: React.FC<ButtonProps> = ({
     disabled: disabledProp = false,
     ...rest
 }) => {
-    // Кнопка disabled, если loading ИЛИ disabledProp
+
     const isDisabled = loading || disabledProp;
 
     const handleClick: React.MouseEventHandler<HTMLButtonElement> = (e) => {

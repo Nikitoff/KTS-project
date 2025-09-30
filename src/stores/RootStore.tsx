@@ -7,7 +7,6 @@ export class RootStore {
     recipeStore = new RecipeStore();
     favoritesStore = new FavoritesStore();
     recipePageStore = new RecipePageStore();
-
 }
 
 export const RootStoreContext = createContext<RootStore>(null!);

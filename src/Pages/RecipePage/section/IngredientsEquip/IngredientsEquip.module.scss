@@ -4,7 +4,7 @@
     width: 100%;
     max-width: 1329px;
     margin: 48px auto 0;
-    padding: 0 $spacing-md;
+    padding: 0 $spacing-5;
 }
 
 .title {
@@ -61,13 +61,13 @@
 .twoColumnGrid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: $spacing-md;
+    gap: $spacing-5;
 }
 
 .item {
     display: flex;
     align-items: center;
-    gap: $spacing-md;
+    gap: $spacing-5;
     min-width: 0;
 }
 

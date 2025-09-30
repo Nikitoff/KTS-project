@@ -4,31 +4,31 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    padding: 0 0 24px;
+    padding: 0 0 $spacing-6;
     gap: $spacing-6;
-
-    width: 360px;
-    height: 578px;
+    width: 100%;
+    max-width: 360px;
+    height: auto;
+    min-height: 578px;
     margin: 0 auto;
-
     background: $color-surface;
     border-radius: $radius-md;
     cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    overflow: hidden;
 
-    /* Сбрасываем растяжение в grid */
-    flex: none;
-    order: 0;
+    &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    }
 }
-
 
 .cardHeader {
     position: relative;
-    width: 360px;
-    height: 360px;
-    flex: none;
-    order: 0;
+    width: 100%;
+    aspect-ratio: 1;
+    flex-shrink: 0;
 }
-
 
 .cardImagePlaceholder {
     position: absolute;
@@ -37,9 +37,8 @@
     left: 0;
     top: 0;
     background: #d9d9d9;
-    border-radius: 10px 10px 0 0;
+    border-radius: $radius-md $radius-md 0 0;
 }
-
 
 .cardImage {
     position: absolute;
@@ -47,25 +46,19 @@
     height: 100%;
     left: 0;
     top: 0;
-    border-radius: 10px 10px 0 0;
+    border-radius: $radius-md $radius-md 0 0;
     object-fit: cover;
 }
-
 
 .cardBody {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    padding: 0 12px;
-    gap: 20px;
-
-    width: 360px;
-    height: 170px;
-
-    flex: none;
-    order: 1;
+    padding: 0 $spacing-3;
+    gap: $spacing-5;
+    flex: 1;
+    width: 100%;
 }
-
 
 .cardContent {
     display: flex;
@@ -74,142 +67,103 @@
     align-items: flex-start;
     padding: 0;
     gap: $spacing-2;
-
-    width: 336px;
-    height: 98px;
-    align-self: stretch;
-    flex: none;
-    order: 0;
+    width: 100%;
+    flex: 1;
 }
-
 
 .cardCaption {
-    width: 336px;
-    height: 18px;
-
-    font-family: 'Roboto', sans-serif;
-    font-style: normal;
+    width: 100%;
+    font-family: $font-base;
     font-weight: 500;
     font-size: $font-size-sm;
-    ;
-    ;
-    ;
-    line-height: 18px;
+    line-height: 1.125;
     color: #afadb5;
-
-
-    flex: none;
-    order: 0;
-    flex-grow: 1;
+    flex-shrink: 0;
 }
 
-
 .cardTitle {
-    width: 336px;
-    height: 24px;
-
-    font-family: 'Roboto', sans-serif;
-    font-style: normal;
+    width: 100%;
+    font-family: $font-base;
     font-weight: 500;
-    font-size: 20px;
-    line-height: 24px;
+    font-size: $font-size-xl;
+    line-height: 1.2;
     color: $color-text;
-
-
-    flex: none;
-    order: 0;
-    flex-grow: 1;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    flex-shrink: 0;
 }
-
 
 .cardSubtitle {
-    width: 336px;
-    height: 40px;
-
-    font-family: 'Roboto', sans-serif;
-    font-style: normal;
+    width: 100%;
+    font-family: $font-base;
     font-weight: 400;
-    font-size: 16px;
-    line-height: 20px;
+    font-size: $font-size-md;
+    line-height: 1.25;
     color: #afadb5;
-
-
-    flex: none;
-    order: 0;
-    flex-grow: 1;
     display: -webkit-box;
-
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
+    flex: 1;
 }
-
 
 .cardBottom {
     display: flex;
     flex-direction: row;
-    justify-content: flex-end;
+    justify-content: space-between;
     align-items: center;
     padding: 0;
-    gap: 8px;
-
-    width: 336px;
-    height: 52px;
-    align-self: stretch;
-    flex: none;
-    order: 1;
+    gap: $spacing-2;
+    width: 100%;
+    height: $control-height;
+    flex-shrink: 0;
 }
-
 
 .cardPrice {
-    width: 69px;
-    height: 22px;
-
-    font-family: 'Roboto', sans-serif;
-    font-style: normal;
+    font-family: $font-base;
     font-weight: 700;
-    font-size: 18px;
-    line-height: 22px;
+    font-size: $font-size-lg;
+    line-height: 1.22;
     color: $color-primary;
-    flex: none;
-    order: 0;
-    flex-grow: 1;
+    flex: 1;
 }
-
 
 .cardButton {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    padding: 14px 20px;
-    gap: 8px;
-
+    padding: $spacing-3 $spacing-5;
+    gap: $spacing-2;
     min-width: 79px;
-    min-height: 52px;
+    height: $control-height;
     background: $color-primary;
     border: none;
     border-radius: $radius-md;
     cursor: pointer;
     transition: background 0.2s ease;
-}
 
-.cardButton:hover {
-    background: $color-brand-dark;
 }
 
 .cardButtonText {
-    width: 39px;
-    height: 18px;
-
-    font-family: 'Roboto', sans-serif;
-    font-style: normal;
+    font-family: $font-base;
     font-weight: 400;
-    font-size: 18px;
-    line-height: 18px;
+    font-size: $font-size-lg;
+    line-height: 1;
     color: $color-surface;
-    flex: none;
-    order: 0;
+    white-space: nowrap;
+}
+
+// Responsive adjustments
+@media (max-width: $breakpoint-sm) {
+    .card {
+        max-width: 100%;
+        min-height: auto;
+    }
+
+    .cardHeader {
+        aspect-ratio: 4/3;
+    }
 }
